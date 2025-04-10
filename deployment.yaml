@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: find-synonyms-demo
+  name: find-synonyms-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: find-synonyms-demo
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: find-synonyms-demo
+    spec:
+      containers:
+      - image: hamid281/find-synonyms:v1
+        name: find-synonyms-demo
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb-service
+  labels:
+    app: lb-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 3000
+    targetPort: 3000
+  selector:
+    app: find-synonyms-demo
