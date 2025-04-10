@@ -16,7 +16,7 @@ spec:
         app: find-synonyms-demo
     spec:
       containers:
-      - image: hamid281/find-synonyms:11
+      - image: hamid281/find-synonyms:12
         name: find-synonyms-demo
         resources: {}
 status: {}
